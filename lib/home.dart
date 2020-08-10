@@ -33,18 +33,24 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   loadJson() async {
-    var jsonResult;
+    var jsonResult, jsonResult1;
 
     // Getting the file path of the JSON and Decoding the file into String
     String data = await rootBundle.loadString('assets/sample.json');
     jsonResult = json.decode(data.toString());
-
-    // OUTPUT : [{name: Jan Salvador Sebastian, company: mclinica}, {name: Harvey sison, company: ateneo}, {name: Juan Dela Cruz, company: null universty}]
     print(jsonResult);
+
+    String data1 = await rootBundle.loadString('assets/sample1.json');
+    jsonResult1 = json.decode(data1.toString());
+    print(jsonResult1);
 
     // We created a loop for adding the `name` and `company` to the USER class
     for (int i = 0; i < jsonResult.length; i++) {
       userList.add(User(jsonResult[i]['name'], jsonResult[i]['company']));
+    }
+
+    for (int i = 0; i < jsonResult1.length; i++) {
+      userList.add(User(jsonResult1[i]['name'], jsonResult1[i]['company']));
     }
 
     // Sorting Area
